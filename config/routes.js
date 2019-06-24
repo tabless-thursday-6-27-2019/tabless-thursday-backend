@@ -63,7 +63,7 @@ function login(req, res) {
 function createTab(req, res) {
   let tab = req.body;
 
-  Tabs.add(tab)
+  Tabs.insert(tab)
     .then(saved => {
       saveTab = { id: saved.id, title: saved.title, url: saved.url }
       res.status(201).json(saveTab)
