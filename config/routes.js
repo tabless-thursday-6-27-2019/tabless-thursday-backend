@@ -6,9 +6,14 @@ const Users = require('../config/users-model')
 const { authenticate, jwtKey } = require('../auth/authenticate');
 
 module.exports = server => {
+    server.get('/', getServer)
   server.post('/api/register', register);
   server.post('/api/login', login);
 };
+
+function getServer(req, res) {
+    res.send('Server is up and running.')
+}
 
 function register(req, res) {
   let user = req.body;
