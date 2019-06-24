@@ -24,7 +24,8 @@ function register(req, res) {
 
   Users.add(user)
     .then(saved => {
-      res.status(201).json(saved)
+      saveUser = {id: saved.id, email: saved.email }
+      res.status(201).json(saveUser)
     })
     .catch(error => {
       console.log('error', error)
