@@ -12,7 +12,12 @@ exports.up = function(knex, Promise) {
         .notNullable()
 
         tabs
-        .string('note', 128)
+        .string('description', 128)
+
+        tabs
+        .string('category', 128)
+        .notNullable()
+
     })  
 };
 
