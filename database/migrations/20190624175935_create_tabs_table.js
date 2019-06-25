@@ -18,14 +18,14 @@ exports.up = function(knex, Promise) {
         .string('category', 128)
         .notNullable()
 
-        tabs
-        .integer('users_id')
-        .notNullable()
-        .unsigned()
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE')
-        .onUpdate('CASCADE');
+        // tabs
+        // .integer('users_id')
+        // .notNullable()
+        // .unsigned()
+        // .references('id')
+        // .inTable('users')
+        // .onDelete('CASCADE')
+        // .onUpdate('CASCADE');
 
     })  
 };

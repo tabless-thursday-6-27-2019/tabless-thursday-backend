@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
           url: 'www.google.com',
           description: 'I use this everyday!',
           category: 'Resources',
-          users_id: 1
+          // users_id: 1
         },
         {
           id: 2,
@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
           url: 'www.youtube.com',
           description: 'I use this everyday also!',
           category: 'Resources',
-          users_id: 1
+          // users_id: 1
         },
         
       ]);
