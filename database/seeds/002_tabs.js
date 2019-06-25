@@ -10,14 +10,16 @@ exports.seed = function(knex, Promise) {
           title: 'Google',
           url: 'www.google.com',
           description: 'I use this everyday!',
-          category: 'Resources'
+          category: 'Resources',
+          users_id: 1
         },
         {
           id: 2,
           title: 'Youtube',
           url: 'www.youtube.com',
           description: 'I use this everyday also!',
-          category: 'Resources'
+          category: 'Resources',
+          users_id: 1
         },
         
       ]);

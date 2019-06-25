@@ -18,13 +18,16 @@ function insert(game) {
     })
 }
 
-async function update(id, changes) {
-    return undefined;
-}
-
-function remove(game) {
+function update(id, changes) {
     return db('tabs')
-    .del(game, 'id')
+      .where({ id })
+      .update(changes);
+  }
+
+function remove(id) {
+    return getAll()
+    .where('id', id)
+    .del()
 }
 
 function getAll() {

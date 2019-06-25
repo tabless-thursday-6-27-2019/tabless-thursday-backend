@@ -12,6 +12,8 @@ module.exports = server => {
   server.post('/tabs', authenticate, createTab)
   server.post('/api/register', register);
   server.post('/api/login', login);
+  server.put('/tabs/:id', authenticate, editTab);
+  server.delete('/tabs/:id', authenticate, deleteTab);
 };
 
 function getServer(req, res) {
@@ -47,6 +49,7 @@ function login(req, res) {
         const token = generateToken(user);
 
         res.status(200).json({
+          id: user.id,
           message: `Welcome back ${user.email}`,
           token,
         })
@@ -65,7 +68,7 @@ function createTab(req, res) {
 
   Tabs.insert(tab)
     .then(saved => {
-      saveTab = { id: saved.id, title: saved.title, url: saved.url }
+      saveTab = { id: saved.id, title: saved.title, url: saved.url, description: saved.description, category: saved.category, users_id: saved.users_id }
       res.status(201).json(saveTab)
     })
     .catch(error => {
@@ -74,20 +77,46 @@ function createTab(req, res) {
     })
 }
 
-function getTabs (req, res) {
+function getTabs(req, res) {
   Tabs.getAll()
-  .then(tabs => {
-    res.status(200).json(tabs)
-    console.log(tabs)
-  })
-  .catch(error => {
-    console.log(error)
-    res.status(500).json(error)
-  })
+    .then(tabs => {
+      res.status(200).json(tabs)
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).json(error)
+    })
 }
 
-function editTab (req, res) {
-  
+async function editTab(req, res) {
+  try {
+    const tabs = await Tabs.update(req.params.id, req.body);
+    if (tabs) {
+      res.status(200).json({ message: 'tab has been editted' });
+    } else {
+      res.status(404).json({ message: 'The tab cannot be found' })
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'Error updating the tab'
+    })
+  }
+}
+
+async function deleteTab(req, res) {
+  try {
+    const count = await Tabs.remove(req.params.id);
+    if (count > 0) {
+      res.status(204).end()
+    } else {
+      res.status(404).json({
+        message: 'The tab does not exist, perhaps it was already deleted.'
+      })
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'We ran into an error removing the tab' })
+  }
 }
 
 function generateToken(user) {
