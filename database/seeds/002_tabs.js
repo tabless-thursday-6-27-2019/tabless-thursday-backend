@@ -9,13 +9,15 @@ exports.seed = function(knex, Promise) {
           id: 1,
           title: 'Google',
           url: 'www.google.com',
-          note: 'I use this everyday!'
+          description: 'I use this everyday!',
+          category: 'Resources'
         },
         {
           id: 2,
           title: 'Youtube',
           url: 'www.youtube.com',
-          note: 'I use this everyday also!'
+          description: 'I use this everyday also!',
+          category: 'Resources'
         },
         
       ]);

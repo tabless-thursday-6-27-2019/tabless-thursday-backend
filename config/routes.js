@@ -86,6 +86,10 @@ function getTabs (req, res) {
   })
 }
 
+function editTab (req, res) {
+  
+}
+
 function generateToken(user) {
   const payload = {
     subject: user.id,
