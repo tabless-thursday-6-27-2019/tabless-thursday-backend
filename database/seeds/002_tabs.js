@@ -11,7 +11,6 @@ exports.seed = function(knex, Promise) {
           url: 'www.google.com',
           description: 'I use this everyday!',
           category: 'Resources',
-          // users_id: 1
         },
         {
           id: 2,
@@ -19,7 +18,13 @@ exports.seed = function(knex, Promise) {
           url: 'www.youtube.com',
           description: 'I use this everyday also!',
           category: 'Resources',
-          // users_id: 1
+        },
+        {
+          id: 3,
+          title: 'Training kit for JavaScript Fundamentals',
+          url: 'https://learn.lambdaschool.com/fsw/sprint/recclZwJxMU8kUngT',
+          description: 'Helps with the fundamentals and leads into deeper concepts of Javascript.',
+          category: 'Training Kit',
         },
         
       ]);

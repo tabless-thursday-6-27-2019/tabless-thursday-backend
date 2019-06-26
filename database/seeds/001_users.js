@@ -9,6 +9,11 @@ exports.seed = function(knex, Promise) {
           id: 1,
           email: 'victor123@gmail.com',
           password: 'pass'
+        },
+        {
+          id: 2,
+          email: 'joel123@gmail.com',
+          password: 'pass123'
         }
       ]);
     });
