@@ -11,11 +11,7 @@ module.exports = {
 function insert(game) {
     return db('tabs')
     .insert(game, 'id')
-    .then(ids => {
-        return db('tabs')
-        .where({ id: ids[0] })
-        .first()
-    })
+    .then(ids => findById(ids[0]))
 }
 
 function update(id, changes) {
@@ -36,13 +32,6 @@ function getAll() {
 
 function findById(id) {
     return db('tabs')
-    .findById(tab, 'id')
-    .then(ids => {
-        return db('tabs')
-        .then(ids => {
-            return db('tabs')
-            .where({ id: ids[0] })
-            .first()
-        })
-    })
+        .where({ id })
+        .first();
 }

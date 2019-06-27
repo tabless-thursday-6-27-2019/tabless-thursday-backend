@@ -89,9 +89,10 @@ function getTabs(req, res) {
 
 async function editTab(req, res) {
   try {
-    const tabs = await Tabs.update(req.params.id, req.body);
-    if (tabs) {
-      res.status(200).json({ message: 'tab has been editted' });
+    const edited = await Tabs.update(req.params.id, req.body);
+    if (edited) {
+      const tab = await Tabs.findById(req.params.id);
+      res.status(200).json(tab);
     } else {
       res.status(404).json({ message: 'The tab cannot be found' })
     }
